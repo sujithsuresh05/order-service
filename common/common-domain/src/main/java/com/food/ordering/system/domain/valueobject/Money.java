@@ -8,6 +8,8 @@ public class Money {
 
     private final BigDecimal amount;
 
+    public static final Money ZERO = new Money(BigDecimal.ZERO);
+
     public Money(BigDecimal amount) {
         this.amount = amount;
     }
@@ -24,7 +26,7 @@ public class Money {
         return money != null && money.getAmount() != null && this.amount.compareTo(money.getAmount()) > 0;
     }
 
-    public Money addMoney(Money money) {
+    public Money add(Money money) {
         return new Money(setScale(this.amount.add(money.getAmount())));
     }
 
