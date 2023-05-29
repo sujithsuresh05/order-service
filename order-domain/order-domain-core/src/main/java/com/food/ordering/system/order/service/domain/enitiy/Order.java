@@ -49,7 +49,7 @@ public class Order extends AggregateRoot<OrderId> {
     }
 
     private void validateInitialOrder() {
-        if (orderStatus == null && getId() == null) {
+        if (orderStatus != null || getId() != null) {
             throw new OrderDomainException("Order is not in correct state for cancel operation!");
         }
     }
@@ -69,7 +69,7 @@ public class Order extends AggregateRoot<OrderId> {
     private void validateItemPrice(OrderItem orderItem) {
         if (!orderItem.isPriceValid()) {
             throw new OrderDomainException("Order item price: " + orderItem.getPrice().getAmount()
-                    + " is not valid for product: " + orderItem.getProduct().getId());
+                    + " is not valid for product: " + orderItem.getProduct().getId().getValue());
         }
     }
 
