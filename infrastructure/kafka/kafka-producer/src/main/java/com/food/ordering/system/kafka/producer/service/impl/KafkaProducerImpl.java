@@ -33,7 +33,7 @@ public class KafkaProducerImpl<K extends Serializable, V extends SpecificRecordB
         }
         catch (KafkaException e) {
             log.error("Error on kafka producer with key: {}, message: {} and exception: {}", key, message, e.getMessage());
-            throw new KafkaProducerException("Error on kafka producer with key: "+ key +", message: "+ message +" and exception: {}")
+            throw new KafkaProducerException("Error on kafka producer with key: "+ key +", message: "+ message +" and exception: {}");
         }
     }
 
