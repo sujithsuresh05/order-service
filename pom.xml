@@ -10,6 +10,7 @@
         <module>order-dataaccess</module>
         <module>order-messaging</module>
         <module>order-container</module>
+        <module>infrastructure</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

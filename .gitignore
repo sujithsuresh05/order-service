@@ -32,3 +32,5 @@ build/
 ### VS Code ###
 .vscode/
 
+/infrastructure/docker-compose/volumes/kafka/
+/infrastructure/docker-compose/volumes/zookeeper/
