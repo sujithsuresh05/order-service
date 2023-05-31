@@ -10,7 +10,6 @@ import com.food.ordering.system.order.service.domain.enitiy.OrderItem;
 import com.food.ordering.system.order.service.domain.enitiy.Product;
 import com.food.ordering.system.order.service.domain.enitiy.Restaurant;
 import com.food.ordering.system.order.service.domain.valueobject.StreetAddress;
-import com.food.ordering.system.order.service.domain.valueobject.TrackingId;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

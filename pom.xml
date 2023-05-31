@@ -5,12 +5,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>common</module>
-        <module>order-domain</module>
-        <module>order-application</module>
-        <module>order-dataaccess</module>
-        <module>order-messaging</module>
-        <module>order-container</module>
         <module>infrastructure</module>
+        <module>order-service-micro</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

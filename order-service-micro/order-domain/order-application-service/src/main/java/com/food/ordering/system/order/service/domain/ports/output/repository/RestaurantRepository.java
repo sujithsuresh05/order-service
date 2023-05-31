@@ -1,6 +1,5 @@
 package com.food.ordering.system.order.service.domain.ports.output.repository;
 
-import com.food.ordering.system.order.service.domain.dto.message.RestaurantApprovalResponse;
 import com.food.ordering.system.order.service.domain.enitiy.Restaurant;
 
 import java.util.Optional;
