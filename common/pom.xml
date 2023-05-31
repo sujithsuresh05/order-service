@@ -24,6 +24,7 @@
     </build>
     <modules>
         <module>common-domain</module>
+        <module>common-application</module>
     </modules>
 
     <packaging>pom</packaging>
