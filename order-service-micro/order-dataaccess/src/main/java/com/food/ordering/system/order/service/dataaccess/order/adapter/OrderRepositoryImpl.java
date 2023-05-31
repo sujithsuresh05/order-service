@@ -1,6 +1,5 @@
 package com.food.ordering.system.order.service.dataaccess.order.adapter;
 
-import com.food.ordering.system.order.service.dataaccess.order.entity.OrderEntity;
 import com.food.ordering.system.order.service.dataaccess.order.mapper.OrderDataAccessMapper;
 import com.food.ordering.system.order.service.dataaccess.order.repository.OrderJpaRepository;
 import com.food.ordering.system.order.service.domain.enitiy.Order;
