@@ -2,7 +2,7 @@ package com.food.ordering.system.kafka.producer.service.impl;
 
 import com.food.ordering.system.kafka.producer.exception.KafkaProducerException;
 import com.food.ordering.system.kafka.producer.service.KafkaProducer;
-import jakarta.annotation.PreDestroy;
+//import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.avro.specific.SpecificRecordBase;
 import org.springframework.kafka.KafkaException;
@@ -12,7 +12,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
+import javax.annotation.PreDestroy;
 import java.io.Serializable;
+import java.util.concurrent.CompletableFuture;
 
 @Slf4j
 @Component
@@ -29,6 +31,7 @@ public class KafkaProducerImpl<K extends Serializable, V extends SpecificRecordB
         log.info("sending message={} to topic={}", message, topicName);
         try {
             ListenableFuture<SendResult<K,V>> kafkaResultFuture = kafkaTemplate.send(topicName, key, message);
+            //CompletableFuture<SendResult<K, V>> kafkaResultFuture1 = kafkaTemplate.send(topicName, key, message);
             kafkaResultFuture.addCallback(callback);
         }
         catch (KafkaException e) {
