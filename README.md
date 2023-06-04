@@ -1,2 +1,2 @@
-This repository is created for to handle order related api calls.
+Sample Microservice architecture based project which follows demanding technologies kafka, event driven design.
 
