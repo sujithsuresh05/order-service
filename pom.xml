@@ -9,8 +9,6 @@
         <module>order-service-micro</module>
         <module>customer-service</module>
         <module>payment-service</module>
-        <module>payment-service</module>
-        <module>payment-container</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -104,6 +102,11 @@
             <dependency>
                 <groupId>com.food.ordering.microservice</groupId>
                 <artifactId>payment-domain-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.food.ordering.microservice</groupId>
+                <artifactId>payment-application-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

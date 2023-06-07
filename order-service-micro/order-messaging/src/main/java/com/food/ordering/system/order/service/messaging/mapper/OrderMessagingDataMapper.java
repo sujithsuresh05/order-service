@@ -15,7 +15,10 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
-public class OrderMessagingDataMapper {
+public class
+
+
+OrderMessagingDataMapper {
 
     public PaymentRequestAvroModel orderCreateEventToPaymentRequestAvroModel(OrderCreatedEvent orderCreatedEvent) {
         Order order = orderCreatedEvent.getOrder();

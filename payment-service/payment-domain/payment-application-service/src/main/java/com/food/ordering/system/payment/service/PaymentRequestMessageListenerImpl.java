@@ -2,10 +2,7 @@ package com.food.ordering.system.payment.service;
 
 import com.food.ordering.system.payment.service.domain.event.PaymentEvent;
 import com.food.ordering.system.payment.service.dto.PaymentRequest;
-import com.food.ordering.system.payment.service.ports.input.message.listener.PaymentCancelledMessagePublisher;
-import com.food.ordering.system.payment.service.ports.input.message.listener.PaymentFailedMessagePublisher;
 import com.food.ordering.system.payment.service.ports.input.message.listener.PaymentRequestMessageListener;
-import com.food.ordering.system.payment.service.ports.ouput.message.publisher.PaymentCompletedMessagePublisher;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

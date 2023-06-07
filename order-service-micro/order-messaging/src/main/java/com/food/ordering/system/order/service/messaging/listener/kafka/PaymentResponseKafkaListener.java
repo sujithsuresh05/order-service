@@ -1,4 +1,4 @@
-package com.food.ordering.system.order.service.messaging.listener.kafaka;
+package com.food.ordering.system.order.service.messaging.listener.kafka;
 
 import com.food.ordering.system.kafka.order.avro.model.PaymentResponseAvroModel;
 import com.food.ordering.system.kafka.order.avro.model.PaymentStatus;

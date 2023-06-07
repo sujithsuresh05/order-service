@@ -5,5 +5,4 @@ import com.food.ordering.system.payment.service.domain.event.PaymentCompletedEve
 
 public interface PaymentCompletedMessagePublisher extends DomainEventPublisher<PaymentCompletedEvent> {
 
-
 }
