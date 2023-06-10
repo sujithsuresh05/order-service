@@ -41,6 +41,11 @@
             </dependency>
             <dependency>
                 <groupId>com.food.ordering.microservice</groupId>
+                <artifactId>common-dataaccess</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.food.ordering.microservice</groupId>
                 <artifactId>order-domain-core</artifactId>
                 <version>${project.version}</version>
             </dependency>

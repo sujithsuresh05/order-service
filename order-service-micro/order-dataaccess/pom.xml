@@ -36,5 +36,9 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.food.ordering.microservice</groupId>
+            <artifactId>common-dataaccess</artifactId>
+        </dependency>
     </dependencies>
 </project>
