@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class Order extends AggregateRoot<OrderId> {
 
     private final CustomerId customerId;
-    private final RestaurantId restaurentId;
+    private final RestaurantId restaurantId;
     private final StreetAddress deliveryAddress;
     private final Money price;
     private final List<OrderItem> items;
@@ -28,7 +28,7 @@ public class Order extends AggregateRoot<OrderId> {
     private Order(Builder builder) {
         super.setId(builder.orderId);
         customerId = builder.customerId;
-        restaurentId = builder.restaurentId;
+        restaurantId = builder.restaurentId;
         deliveryAddress = builder.deliveryAddress;
         price = builder.price;
         items = builder.items;
@@ -135,8 +135,8 @@ public class Order extends AggregateRoot<OrderId> {
         return customerId;
     }
 
-    public RestaurantId getRestaurentId() {
-        return restaurentId;
+    public RestaurantId getRestaurantId() {
+        return restaurantId;
     }
 
     public StreetAddress getDeliveryAddress() {

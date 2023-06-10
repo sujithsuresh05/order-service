@@ -29,7 +29,7 @@ public class OrderDataMapper {
         return Order.builder()
                 .customerId(new CustomerId(createOrderCommand.getCustomerId()))
                 .restaurentId(new RestaurantId(createOrderCommand.getRestaurantId()))
-                .deliveryAddress(orderAddressToStreetAddress(createOrderCommand.getOrderAddress()))
+                .deliveryAddress(orderAddressToStreetAddress(createOrderCommand.getAddress()))
                 .price(new Money(createOrderCommand.getPrice()))
                 .items(orderItemsToOrderItemsEntities(createOrderCommand.getItems()))
                 .build();
@@ -49,7 +49,7 @@ public class OrderDataMapper {
         return new StreetAddress(
                 UUID.randomUUID(),
                 orderAddress.getStreet(),
-                orderAddress.getPostCode(),
+                orderAddress.getPostalCode(),
                 orderAddress.getCity());
     }
 

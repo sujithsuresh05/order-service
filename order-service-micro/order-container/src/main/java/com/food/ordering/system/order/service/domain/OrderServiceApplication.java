@@ -1,13 +1,12 @@
 package com.food.ordering.system.order.service.domain;
 
-import jakarta.persistence.Entity;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@EnableJpaRepositories(basePackages = "com.food.ordering.system.order.service.dataaccess")
-@EntityScan(basePackages = "com.food.ordering.system.order.service.dataaccess")
+@EnableJpaRepositories(basePackages = {"com.food.ordering.system.order.service.dataaccess", "com.food.ordering.system.dataaccess.restaurant"})
+@EntityScan(basePackages = {"com.food.ordering.system.order.service.dataaccess", "com.food.ordering.system.dataaccess.restaurant"})
 @SpringBootApplication(scanBasePackages = "com.food.ordering.system")
 public class OrderServiceApplication {
 
