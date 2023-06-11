@@ -5,7 +5,9 @@ import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.payment.service.dataaccess.creditentry.entity.CreditEntryEntity;
 import com.food.ordering.system.payment.service.domain.entity.CreditEntry;
 import com.food.ordering.system.payment.service.domain.valuobject.CreditEntryId;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CreditEntryDataAccessMapper {
 
     public CreditEntry creditEntryEntityToCreditEntry(CreditEntryEntity creditEntryEntity) {
