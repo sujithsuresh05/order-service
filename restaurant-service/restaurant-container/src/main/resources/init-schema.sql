@@ -38,7 +38,7 @@ CREATE TABLE restaurant.products
     id uuid NOT NULL,
     name character varying collate pg_catalog."default" NOT NULL,
     price numeric(10, 2) NOT NULL,
-    active boolean NOT NULL,
+    available boolean NOT NULL,
     CONSTRAINT products_pkey PRIMARY KEY(id)
 );
 
@@ -49,7 +49,6 @@ CREATE TABLE restaurant.restaurant_products
     id uuid NOT NULL,
     restaurant_id uuid NOT NULL,
     product_id uuid NOT NULL,
-    active boolean NOT NULL,
     CONSTRAINT restaurant_products_pkey PRIMARY KEY(id)
 );
 
@@ -61,7 +60,7 @@ ALTER TABLE restaurant.restaurant_products
     NOT VALID;
 
 ALTER TABLE restaurant.restaurant_products
-    ADD CONSTRAINT "FK_RESTAURANT_ID" FOREIGN KEY (product_id)
+    ADD CONSTRAINT "FK_PRODUCT_ID" FOREIGN KEY (product_id)
     REFERENCES restaurant.products (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE RESTRICT
@@ -91,8 +90,8 @@ DROP FUNCTION IF EXISTS restaurant.refresh_order_restaurant_m_view();
 
 CREATE OR REPLACE FUNCTION restaurant.refresh_order_restaurant_m_view()
 returns trigger
-AS
-BEGIN '
+AS '
+BEGIN
     refresh materialized view restaurant.order_restaurant_m_view;
     return NULL;
 END;
