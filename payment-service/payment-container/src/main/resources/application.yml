@@ -42,14 +42,14 @@ kafka-producer-config:
   compression-type: snappy
   acks: all
   batch-size: 16384
-  batch-size-boost-faster: 100
+  batch-size-boost-factor: 100
   linger-ms: 5
   request-timeout-ms: 60000
   retry-count: 5
 
 kafka-consumer-config:
-  key-deserializer-class: org.apache.kafka.common.serialization.StringDeserializer
-  value-deserializer-class: io.confluent.kafka.serializers.KafkaAvroDeserializer
+  key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
   payment-consumer-group-id: payment-topic-consumer
   auto-offset-reset: earliest
   specific-avro-reader-key: specific.avro.reader
@@ -65,3 +65,6 @@ kafka-consumer-config:
   max-partition-fetch-bytes-boost-factor: 1
   poll-timeout-ms: 150
 
+# kafka-topics --list --bootstrap-server localhost:29092
+# >docker ps -a
+# https://betterprogramming.pub/adding-schema-registry-to-kafka-in-your-local-docker-environment-49ada28c8a9b
