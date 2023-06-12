@@ -1,4 +1,4 @@
-package om.food.ordering.system.kafka.consumer.config;
+package com.food.ordering.system.restaurant.service.messaging.listener.kafka;
 
 import com.food.ordering.system.kafka.config.data.KafkaConfigData;
 import com.food.ordering.system.kafka.config.data.KafkaConsumerConfigData;
@@ -17,8 +17,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-//@EnableKafka
-//@Configuration
+@EnableKafka
+@Configuration
 public class KafkaConsumerConfig<K extends Serializable, V extends SpecificRecordBase> {
 
     private final KafkaConfigData kafkaConfigData;

@@ -40,6 +40,9 @@ public class Product extends BaseEntity<ProductId> {
     }
 
     public void updateWithConfirmedNamePriceAndAvailability(String name, Money price, boolean available) {
+        this.name = name;
+        this.price = price;
+        this.available = available;
     }
 
     public static final class Builder {

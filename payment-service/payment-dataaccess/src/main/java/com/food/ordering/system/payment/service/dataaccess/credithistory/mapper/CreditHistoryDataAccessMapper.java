@@ -15,14 +15,14 @@ public class CreditHistoryDataAccessMapper {
                 .customerId(new CustomerId(creditHistoryEntity.getCustomerId()))
                 .transanctionType(creditHistoryEntity.getType())
                 .creditHistoryId(new CreditHistoryId(creditHistoryEntity.getId()))
-                .amount(new Money(creditHistoryEntity.getPrice()))
+                .amount(new Money(creditHistoryEntity.getAmount()))
                 .build();
     }
 
     public CreditHistoryEntity creditHistoryToCreditHistoryEntity(CreditHistory creditHistory) {
         return CreditHistoryEntity.builder()
                 .id(creditHistory.getId().getValue())
-                .price(creditHistory.getAmount().getAmount())
+                .amount(creditHistory.getAmount().getAmount())
                 .customerId(creditHistory.getCustomerId().getValue())
                 .type(creditHistory.getTransanctionType())
                 .build();

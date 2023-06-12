@@ -14,11 +14,11 @@
     <dependencies>
         <dependency>
             <groupId>com.food.ordering.microservice</groupId>
-            <artifactId>kafka-producer</artifactId>
+            <artifactId>kafka-consumer</artifactId>
         </dependency>
         <dependency>
             <groupId>com.food.ordering.microservice</groupId>
-            <artifactId>kafka-consumer</artifactId>
+            <artifactId>kafka-producer</artifactId>
         </dependency>
         <dependency>
             <groupId>com.food.ordering.microservice</groupId>
@@ -30,16 +30,4 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>17</source>
-                    <target>17</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

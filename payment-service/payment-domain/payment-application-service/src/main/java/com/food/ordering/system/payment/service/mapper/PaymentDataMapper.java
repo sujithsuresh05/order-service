@@ -12,7 +12,8 @@ import java.util.UUID;
 @Component
 public class PaymentDataMapper {
     public Payment paymentRequestModelToPayment(PaymentRequest paymentRequest) {
-
+        String uuidOrderid = UUID.fromString(paymentRequest.getOrderId()).toString();
+        System.out.println(uuidOrderid);
         return Payment.builder()
                 .customerId(new CustomerId(UUID.fromString(paymentRequest.getCustomerId())))
                 .orderId(new OrderId(UUID.fromString(paymentRequest.getOrderId())))

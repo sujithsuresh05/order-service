@@ -7,7 +7,7 @@ logging:
 
 payment-service:
   payment-request-topic-name: payment-request
-  payment-response-topic-name: payment-repsponse
+  payment-response-topic-name: payment-response
 
 
 spring:
@@ -30,7 +30,7 @@ spring:
 
 
 kafka-config:
-  bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
+  bootstrap-servers: localhost:9092, localhost:29092, localhost:39092
   schema-registry-url-key: schema.registry.url
   schema-registry-url: http://localhost:8081
   num-of-partitions: 3
