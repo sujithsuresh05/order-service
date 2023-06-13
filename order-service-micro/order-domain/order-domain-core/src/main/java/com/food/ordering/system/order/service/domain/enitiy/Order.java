@@ -96,7 +96,7 @@ public class Order extends AggregateRoot<OrderId> {
     }
 
     public void initCancel(List<String> failureMessages) {
-        if (orderStatus != OrderStatus.APPROVED) {
+        if (orderStatus != OrderStatus.PAID) {
             throw new OrderDomainException("Order is not in the correct state for initCancel operation!");
         }
         orderStatus = OrderStatus.CANCELLING;
