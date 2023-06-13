@@ -150,6 +150,11 @@
                 <artifactId>restaurant-application-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.food.ordering.microservice</groupId>
+                <artifactId>outbox</artifactId>
+                <version>${project.version}</version>
+            </dependency>
     </dependencies>
     </dependencyManagement>
 
