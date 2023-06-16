@@ -1,8 +1,6 @@
 package com.food.ordering.system.order.service.domain;
 
-import com.food.ordering.system.domain.event.EmptyEvent;
 import com.food.ordering.system.order.service.domain.dto.message.PaymentResponse;
-import com.food.ordering.system.order.service.domain.event.OrderPaidEvent;
 import com.food.ordering.system.order.service.domain.ports.input.message.listener.payment.PaymentResponseMessageListener;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -30,7 +28,7 @@ public class PaymentResponseMessageListenerImpl implements PaymentResponseMessag
     @Override
     public void paymentCancelled(PaymentResponse paymentResponse) {
 
-        EmptyEvent emptyEvent = orderPaymentSaga.rollback(paymentResponse);
+        orderPaymentSaga.rollback(paymentResponse);
         log.info("Order is roll backed with failure message: {}",
                 String.join(FAILURE_MESSAGE_DELIMITER, paymentResponse.getFailureMessages()));
 

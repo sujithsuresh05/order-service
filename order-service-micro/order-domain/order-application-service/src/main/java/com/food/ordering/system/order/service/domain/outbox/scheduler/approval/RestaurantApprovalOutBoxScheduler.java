@@ -3,7 +3,7 @@ package com.food.ordering.system.order.service.domain.outbox.scheduler.approval;
 import com.food.ordering.system.order.service.domain.outbox.model.approval.OrderApprovalOutboxMessage;
 import com.food.ordering.system.order.service.domain.ports.output.message.publisher.restaurantapproval.RestaurantApprovalRequestMessagePublisher;
 import com.food.ordering.system.outbox.OutBoxScheduler;
-import com.food.ordering.system.outbox.OutBoxStatus;
+import com.food.ordering.system.outbox.OutboxStatus;
 import com.food.ordering.system.saga.SagaStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -33,7 +33,7 @@ public class RestaurantApprovalOutBoxScheduler implements OutBoxScheduler {
             initialDelayString = "${order-service.outbox-scheduler-initial-delay}")
     public void processOutBoxMessage() {
         Optional<List<OrderApprovalOutboxMessage>> outboxApprovalMessageResponse = approvalOutboxHelper.getApprovalOutboxMessageByOutboxStatusAndSagaStatus(
-                OutBoxStatus.STARTED,
+                OutboxStatus.STARTED,
                 SagaStatus.PROCESSING);
 
         if (outboxApprovalMessageResponse.isPresent() && outboxApprovalMessageResponse.get().size() > 0) {
@@ -47,7 +47,7 @@ public class RestaurantApprovalOutBoxScheduler implements OutBoxScheduler {
         }
     }
 
-    private void updateOutBoxStatus(OrderApprovalOutboxMessage orderApprovalOutboxMessage, OutBoxStatus outBoxStatus) {
+    private void updateOutBoxStatus(OrderApprovalOutboxMessage orderApprovalOutboxMessage, OutboxStatus outBoxStatus) {
         orderApprovalOutboxMessage.setOutBoxStatus(outBoxStatus);
         approvalOutboxHelper.save(orderApprovalOutboxMessage);
         log.info("OrderApprovalOutboxMessage is updated with outbox status: {}", outBoxStatus.name());

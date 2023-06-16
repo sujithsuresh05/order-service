@@ -7,10 +7,9 @@ import com.food.ordering.system.order.service.domain.exception.OrderDomainExcept
 import com.food.ordering.system.order.service.domain.outbox.model.payment.OrderPaymentEventPayload;
 import com.food.ordering.system.order.service.domain.outbox.model.payment.OrderPaymentOutboxMessage;
 import com.food.ordering.system.order.service.domain.ports.output.repository.PaymentOutboxRepository;
-import com.food.ordering.system.outbox.OutBoxStatus;
+import com.food.ordering.system.outbox.OutboxStatus;
 import com.food.ordering.system.saga.SagaStatus;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +33,7 @@ public class PaymentOutboxHelper {
 
     @Transactional(readOnly = true)
     public Optional<List<OrderPaymentOutboxMessage>> getPaymentOutboxMessageByOutboxStatusAndSagaStatus(
-            OutBoxStatus outBoxStatus, SagaStatus... sagaStatus) {
+            OutboxStatus outBoxStatus, SagaStatus... sagaStatus) {
         return paymentOutboxRepository.findByTypeAndOutboxStatusAndSagaStatus(ORDER_SAGA_NAME,
                 outBoxStatus,
                 sagaStatus);
@@ -60,7 +59,7 @@ public class PaymentOutboxHelper {
     public void savePaymentOutboxMessage(OrderPaymentEventPayload orderPaymentEventPayload,
                                          OrderStatus orderStatus,
                                          SagaStatus sagaStatus,
-                                         OutBoxStatus outBoxStatus,
+                                         OutboxStatus outBoxStatus,
                                          UUID sagaId) {
         save(OrderPaymentOutboxMessage.builder()
                 .id(UUID.randomUUID())
@@ -75,7 +74,7 @@ public class PaymentOutboxHelper {
     }
 
     @Transactional
-    public void deletePaymentOutboxMessageByOutboxStatusAndSagaStatus(OutBoxStatus outBoxStatus,
+    public void deletePaymentOutboxMessageByOutboxStatusAndSagaStatus(OutboxStatus outBoxStatus,
                                                                       SagaStatus... sagaStatuses) {
         paymentOutboxRepository.deleteByTypeAndOutboxStatusAndSagaStatus(ORDER_SAGA_NAME, outBoxStatus, sagaStatuses);
     }

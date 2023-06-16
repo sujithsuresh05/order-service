@@ -3,7 +3,7 @@ package com.food.ordering.system.order.service.domain.outbox.scheduler.payment;
 import com.food.ordering.system.order.service.domain.outbox.model.payment.OrderPaymentOutboxMessage;
 import com.food.ordering.system.order.service.domain.ports.output.message.publisher.payment.PaymentRequestMessagePublisher;
 import com.food.ordering.system.outbox.OutBoxScheduler;
-import com.food.ordering.system.outbox.OutBoxStatus;
+import com.food.ordering.system.outbox.OutboxStatus;
 import com.food.ordering.system.saga.SagaStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -33,7 +33,7 @@ public class PaymentOutboxScheduler implements OutBoxScheduler {
             initialDelayString = "${order-service.outbox-scheduler-initial-delay}")
     public void processOutBoxMessage() {
         Optional<List<OrderPaymentOutboxMessage>> outboxMessageResponse = paymentOutboxHelper.getPaymentOutboxMessageByOutboxStatusAndSagaStatus(
-                OutBoxStatus.STARTED,
+                OutboxStatus.STARTED,
                 SagaStatus.STARTED,
                 SagaStatus.COMPENSATING);
 
@@ -48,7 +48,7 @@ public class PaymentOutboxScheduler implements OutBoxScheduler {
         }
     }
 
-    private void updateOutBoxStatus(OrderPaymentOutboxMessage orderPaymentOutboxMessage, OutBoxStatus outBoxStatus) {
+    private void updateOutBoxStatus(OrderPaymentOutboxMessage orderPaymentOutboxMessage, OutboxStatus outBoxStatus) {
         orderPaymentOutboxMessage.setOutBoxStatus(outBoxStatus);
         paymentOutboxHelper.save(orderPaymentOutboxMessage);
         log.info("OrderPaymentOutboxMessage is updated with outbox status: {}", outBoxStatus.name());

@@ -7,7 +7,7 @@ import com.food.ordering.system.order.service.domain.exception.OrderDomainExcept
 import com.food.ordering.system.order.service.domain.outbox.model.approval.OrderApprovalEventPayload;
 import com.food.ordering.system.order.service.domain.outbox.model.approval.OrderApprovalOutboxMessage;
 import com.food.ordering.system.order.service.domain.ports.output.repository.ApprovalOutboxRepository;
-import com.food.ordering.system.outbox.OutBoxStatus;
+import com.food.ordering.system.outbox.OutboxStatus;
 import com.food.ordering.system.saga.SagaStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -34,7 +34,7 @@ public class ApprovalOutboxHelper {
 
     @Transactional(readOnly = true)
     public Optional<List<OrderApprovalOutboxMessage>> getApprovalOutboxMessageByOutboxStatusAndSagaStatus(
-            OutBoxStatus outBoxStatus, SagaStatus... sagaStatus) {
+            OutboxStatus outBoxStatus, SagaStatus... sagaStatus) {
         return approvalOutboxRepository.findByTypeAndOutboxStatusAndSagaStatus(ORDER_SAGA_NAME,
                 outBoxStatus,
                 sagaStatus);
@@ -57,7 +57,7 @@ public class ApprovalOutboxHelper {
     }
 
     @Transactional
-    public void deleteApprovalOutboxMessageByOutboxStatusAndSagaStatus(OutBoxStatus outBoxStatus,
+    public void deleteApprovalOutboxMessageByOutboxStatusAndSagaStatus(OutboxStatus outBoxStatus,
                                                                        SagaStatus... sagaStatuses) {
         approvalOutboxRepository.deleteByTypeAndOutboxStatusAndSagaStatus(ORDER_SAGA_NAME, outBoxStatus, sagaStatuses);
     }
@@ -66,7 +66,7 @@ public class ApprovalOutboxHelper {
     public void saveApprovalOutboxMessage(OrderApprovalEventPayload orderApprovalEventPayload,
                                           OrderStatus orderStatus,
                                           SagaStatus sagaStatus,
-                                          OutBoxStatus outBoxStatus,
+                                          OutboxStatus outBoxStatus,
                                           UUID sagaId) {
         save(OrderApprovalOutboxMessage.builder()
                 .id(UUID.randomUUID())

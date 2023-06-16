@@ -64,12 +64,12 @@ ALTER TABLE "order".order_items
 
 
 DROP TYPE IF EXISTS saga_status;
-CREATE TYPE saga_status AS ENUM('STARTED', 'FAILED', 'SUCCEEDED', 'PROCESSING', 'COMPENSATING', 'COMPENSATED')
+CREATE TYPE saga_status AS ENUM('STARTED', 'FAILED', 'SUCCEEDED', 'PROCESSING', 'COMPENSATING', 'COMPENSATED');
 
 DROP TYPE IF EXISTS outbox_status;
 CREATE TYPE outbox_status AS ENUM ('STARTED', 'COMPLETED', 'FAILED');
 
-DROP TABLE "order".payment_outbox IF EXISTS CASCADE;
+DROP TABLE IF EXISTS "order".payment_outbox  CASCADE;
 
 CREATE TABLE "order".payment_outbox
 (
@@ -95,7 +95,7 @@ CREATE UNIQUE INDEX "payment_outbox_saga_id"
     (type, saga_id, saga_status);
 
 
-DROP TABLE "order".restaurant_approval_outbox IF EXISTS CASCADE;
+DROP TABLE IF EXISTS "order".restaurant_approval_outbox CASCADE;
 
 CREATE TABLE "order".restaurant_approval_outbox
 (

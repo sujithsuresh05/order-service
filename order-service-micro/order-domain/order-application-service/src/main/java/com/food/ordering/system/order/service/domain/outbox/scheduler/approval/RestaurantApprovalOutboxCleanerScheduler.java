@@ -1,10 +1,8 @@
 package com.food.ordering.system.order.service.domain.outbox.scheduler.approval;
 
 import com.food.ordering.system.order.service.domain.outbox.model.approval.OrderApprovalOutboxMessage;
-import com.food.ordering.system.order.service.domain.outbox.model.payment.OrderPaymentOutboxMessage;
-import com.food.ordering.system.order.service.domain.outbox.scheduler.payment.PaymentOutboxHelper;
 import com.food.ordering.system.outbox.OutBoxScheduler;
-import com.food.ordering.system.outbox.OutBoxStatus;
+import com.food.ordering.system.outbox.OutboxStatus;
 import com.food.ordering.system.saga.SagaStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -30,7 +28,7 @@ public class RestaurantApprovalOutboxCleanerScheduler implements OutBoxScheduler
 
         Optional<List<OrderApprovalOutboxMessage>> outboxMessagesResponse =
                 approvalOutboxHelper.getApprovalOutboxMessageByOutboxStatusAndSagaStatus(
-                        OutBoxStatus.COMPLETED,
+                        OutboxStatus.COMPLETED,
                         SagaStatus.PROCESSING,
                         SagaStatus.FAILED,
                         SagaStatus.SUCCEEDED);
@@ -39,7 +37,7 @@ public class RestaurantApprovalOutboxCleanerScheduler implements OutBoxScheduler
             log.info("Received {} orderApprovalOutboxMessages for clean-up. The payload {}", orderApprovalOutboxMessages.size(),
                     orderApprovalOutboxMessages.stream().map(OrderApprovalOutboxMessage::getPayload).collect(Collectors.joining("\n")));
             approvalOutboxHelper.deleteApprovalOutboxMessageByOutboxStatusAndSagaStatus(
-                    OutBoxStatus.COMPLETED,
+                    OutboxStatus.COMPLETED,
                     SagaStatus.COMPENSATED,
                     SagaStatus.FAILED,
                     SagaStatus.SUCCEEDED);

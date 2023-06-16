@@ -1,7 +1,7 @@
 package com.food.ordering.system.order.service.domain.ports.output.repository;
 
 import com.food.ordering.system.order.service.domain.outbox.model.approval.OrderApprovalOutboxMessage;
-import com.food.ordering.system.outbox.OutBoxStatus;
+import com.food.ordering.system.outbox.OutboxStatus;
 import com.food.ordering.system.saga.SagaStatus;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public interface ApprovalOutboxRepository {
     OrderApprovalOutboxMessage save(OrderApprovalOutboxMessage orderApprovalOutboxMessage);
 
     Optional<List<OrderApprovalOutboxMessage>> findByTypeAndOutboxStatusAndSagaStatus(String type,
-                                                                                     OutBoxStatus outBoxStatus,
+                                                                                     OutboxStatus outboxStatus,
                                                                                      SagaStatus... sagaStatus);
 
     Optional<OrderApprovalOutboxMessage> findByTypeAndSagaIdAndSagaStatus(String type,
@@ -21,6 +21,6 @@ public interface ApprovalOutboxRepository {
                                                                          SagaStatus... sagaStatus);
 
     void deleteByTypeAndOutboxStatusAndSagaStatus(String type,
-                                                  OutBoxStatus outBoxStatus,
+                                                  OutboxStatus outboxStatus,
                                                   SagaStatus... sagaStatus);
 }

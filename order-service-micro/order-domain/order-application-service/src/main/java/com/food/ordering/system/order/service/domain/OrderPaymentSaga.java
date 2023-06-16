@@ -11,7 +11,7 @@ import com.food.ordering.system.order.service.domain.outbox.model.approval.Order
 import com.food.ordering.system.order.service.domain.outbox.model.payment.OrderPaymentOutboxMessage;
 import com.food.ordering.system.order.service.domain.outbox.scheduler.approval.ApprovalOutboxHelper;
 import com.food.ordering.system.order.service.domain.outbox.scheduler.payment.PaymentOutboxHelper;
-import com.food.ordering.system.outbox.OutBoxStatus;
+import com.food.ordering.system.outbox.OutboxStatus;
 import com.food.ordering.system.saga.SagaStatus;
 import com.food.ordering.system.saga.SagaStep;
 import lombok.extern.slf4j.Slf4j;
@@ -71,7 +71,7 @@ public class OrderPaymentSaga implements SagaStep<PaymentResponse> {
                 orderDataMapper.orderPaidEventToOrderApprovalEventPayload(orderPaidEvent),
                 orderPaidEvent.getOrder().getOrderStatus(),
                 sagaStatus,
-                OutBoxStatus.STARTED,
+                OutboxStatus.STARTED,
                 UUID.fromString(paymentResponse.getSagaId()));
 
         log.info("Order with id:{} is paid", orderPaidEvent.getOrder().getId().getValue());
