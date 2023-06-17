@@ -9,12 +9,12 @@ import java.util.List;
 public abstract class PaymentEvent implements DomainEvent<Payment> {
 
     private final Payment payment;
-    private final ZonedDateTime zonedDateTime;
+    private final ZonedDateTime createdAt;
     private final List<String> failureMessages;
 
     public PaymentEvent(Payment payment, ZonedDateTime zonedDateTime, List<String> failureMessages) {
         this.payment = payment;
-        this.zonedDateTime = zonedDateTime;
+        this.createdAt = zonedDateTime;
         this.failureMessages = failureMessages;
     }
 
@@ -22,8 +22,8 @@ public abstract class PaymentEvent implements DomainEvent<Payment> {
         return payment;
     }
 
-    public ZonedDateTime getZonedDateTime() {
-        return zonedDateTime;
+    public ZonedDateTime getCreatedAt() {
+        return createdAt;
     }
 
     public List<String> getFailureMessages() {

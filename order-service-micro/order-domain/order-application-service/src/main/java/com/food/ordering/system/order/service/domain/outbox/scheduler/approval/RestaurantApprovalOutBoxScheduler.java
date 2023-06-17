@@ -31,7 +31,7 @@ public class RestaurantApprovalOutBoxScheduler implements OutBoxScheduler {
     @Transactional
     @Scheduled(fixedDelayString = "${order-service.outbox-scheduler-fixed-rate}",
             initialDelayString = "${order-service.outbox-scheduler-initial-delay}")
-    public void processOutBoxMessage() {
+    public void processOutboxMessage() {
         Optional<List<OrderApprovalOutboxMessage>> outboxApprovalMessageResponse = approvalOutboxHelper.getApprovalOutboxMessageByOutboxStatusAndSagaStatus(
                 OutboxStatus.STARTED,
                 SagaStatus.PROCESSING);

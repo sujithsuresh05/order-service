@@ -24,7 +24,7 @@ public class RestaurantApprovalOutboxCleanerScheduler implements OutBoxScheduler
 
     @Override
     @Scheduled(cron = "@midnight")
-    public void processOutBoxMessage() {
+    public void processOutboxMessage() {
 
         Optional<List<OrderApprovalOutboxMessage>> outboxMessagesResponse =
                 approvalOutboxHelper.getApprovalOutboxMessageByOutboxStatusAndSagaStatus(
