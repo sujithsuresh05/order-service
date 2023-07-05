@@ -28,6 +28,10 @@
             <groupId>com.food.ordering.microservice</groupId>
             <artifactId>common-dataaccess</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.food.ordering.microservice</groupId>
+            <artifactId>outbox</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

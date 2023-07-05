@@ -1,10 +1,9 @@
-package com.food.ordering.system.payment.service.domain.outbox.scheduler;
-
+package com.food.ordering.system.restaurant.service.domain.outbox.scheduler;
 
 import com.food.ordering.system.outbox.OutboxScheduler;
 import com.food.ordering.system.outbox.OutboxStatus;
-import com.food.ordering.system.payment.service.domain.outbox.model.OrderOutboxMessage;
-import com.food.ordering.system.payment.service.domain.ports.output.message.publisher.PaymentResponseMessagePublisher;
+import com.food.ordering.system.restaurant.service.domain.outbox.model.OrderOutboxMessage;
+import com.food.ordering.system.restaurant.service.domain.ports.output.message.publisher.RestaurantApprovalResponseMessagePublisher;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -19,18 +18,18 @@ import java.util.stream.Collectors;
 public class OrderOutboxScheduler implements OutboxScheduler {
 
     private final OrderOutboxHelper orderOutboxHelper;
-    private final PaymentResponseMessagePublisher paymentResponseMessagePublisher;
+    private final RestaurantApprovalResponseMessagePublisher responseMessagePublisher;
 
     public OrderOutboxScheduler(OrderOutboxHelper orderOutboxHelper,
-                                PaymentResponseMessagePublisher paymentResponseMessagePublisher) {
+                                RestaurantApprovalResponseMessagePublisher responseMessagePublisher) {
         this.orderOutboxHelper = orderOutboxHelper;
-        this.paymentResponseMessagePublisher = paymentResponseMessagePublisher;
+        this.responseMessagePublisher = responseMessagePublisher;
     }
 
-    @Override
     @Transactional
-    @Scheduled(fixedRateString = "${payment-service.outbox-scheduler-fixed-rate}",
-            initialDelayString = "${payment-service.outbox-scheduler-initial-delay}")
+    @Scheduled(fixedRateString = "${restaurant-service.outbox-scheduler-fixed-rate}",
+            initialDelayString = "${restaurant-service.outbox-scheduler-initial-delay}")
+    @Override
     public void processOutboxMessage() {
         Optional<List<OrderOutboxMessage>> outboxMessagesResponse =
                 orderOutboxHelper.getOrderOutboxMessageByOutboxStatus(OutboxStatus.STARTED);
@@ -40,10 +39,12 @@ public class OrderOutboxScheduler implements OutboxScheduler {
                     outboxMessages.stream().map(outboxMessage ->
                             outboxMessage.getId().toString()).collect(Collectors.joining(",")));
             outboxMessages.forEach(orderOutboxMessage ->
-                    paymentResponseMessagePublisher.publish(orderOutboxMessage,
-                            orderOutboxHelper::updateOutboxMessage));
+                    responseMessagePublisher.publish(orderOutboxMessage,
+                            orderOutboxHelper::updateOutboxStatus));
             log.info("{} OrderOutboxMessage sent to message bus!", outboxMessages.size());
         }
     }
+
+
 
 }

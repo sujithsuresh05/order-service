@@ -2,7 +2,7 @@ package com.food.ordering.system.order.service.domain.outbox.scheduler.approval;
 
 import com.food.ordering.system.order.service.domain.outbox.model.approval.OrderApprovalOutboxMessage;
 import com.food.ordering.system.order.service.domain.ports.output.message.publisher.restaurantapproval.RestaurantApprovalRequestMessagePublisher;
-import com.food.ordering.system.outbox.OutBoxScheduler;
+import com.food.ordering.system.outbox.OutboxScheduler;
 import com.food.ordering.system.outbox.OutboxStatus;
 import com.food.ordering.system.saga.SagaStatus;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Component
-public class RestaurantApprovalOutBoxScheduler implements OutBoxScheduler {
+public class RestaurantApprovalOutBoxScheduler implements OutboxScheduler {
 
     private final ApprovalOutboxHelper approvalOutboxHelper;
     private final RestaurantApprovalRequestMessagePublisher restaurantApprovalRequestMessagePublisher;

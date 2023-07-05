@@ -1,6 +1,6 @@
 package com.food.ordering.system.outbox;
 
-public interface OutBoxScheduler {
+public interface OutboxScheduler {
 
     void processOutboxMessage();
 }
