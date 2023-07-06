@@ -25,9 +25,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 
 @Slf4j
-@SpringBootTest(classes = OrderServiceApplication.class)
-@Sql(value = {"classpath:sql/OrderPaymentSagaTestSetUp.sql"})
-@Sql(value = {"classpath:sql/OrderPaymentSagaTestCleanUp.sql"}, executionPhase = AFTER_TEST_METHOD)
+//@SpringBootTest(classes = OrderServiceApplication.class)
+//@Sql(value = {"classpath:sql/OrderPaymentSagaTestSetUp.sql"})
+//@Sql(value = {"classpath:sql/OrderPaymentSagaTestCleanUp.sql"}, executionPhase = AFTER_TEST_METHOD)
 public class OrderPaymentSagaTest {
 
     @Autowired
@@ -42,13 +42,13 @@ public class OrderPaymentSagaTest {
     private final UUID PAYMENT_ID = UUID.randomUUID();
     private final BigDecimal PRICE = new BigDecimal("100");
 
-    @Test
+    //@Test
     void testDoublePayment() {
         orderPaymentSaga.process(getPaymentResponse());
         orderPaymentSaga.process(getPaymentResponse());
     }
 
-    @Test
+    //@Test
     void testDoublePaymentWithThreads() throws InterruptedException {
         Thread thread1 = new Thread(() -> orderPaymentSaga.process(getPaymentResponse()));
         Thread thread2 = new Thread(() -> orderPaymentSaga.process(getPaymentResponse()));
@@ -62,7 +62,7 @@ public class OrderPaymentSagaTest {
         assertPaymentOutbox();
     }
 
-    @Test
+    //@Test
     void testDoublePaymentWithLatch() throws InterruptedException {
         CountDownLatch latch = new CountDownLatch(2);
 

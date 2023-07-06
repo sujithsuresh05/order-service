@@ -65,6 +65,7 @@ public class OrderDataMapper {
 
     public OrderApprovalEventPayload orderPaidEventToOrderApprovalEventPayload(OrderPaidEvent orderPaidEvent) {
         return OrderApprovalEventPayload.builder()
+                .restaurantId(orderPaidEvent.getOrder().getRestaurantId().getValue().toString())
                 .createdAt(orderPaidEvent.getCreatedAt())
                 .orderId(orderPaidEvent.getOrder().getId().getValue().toString())
                 .price(orderPaidEvent.getOrder().getPrice().getAmount())

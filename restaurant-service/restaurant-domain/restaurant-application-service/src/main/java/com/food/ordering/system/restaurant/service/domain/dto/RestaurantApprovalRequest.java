@@ -23,7 +23,7 @@ public class RestaurantApprovalRequest {
     private RestaurantOrderStatus restaurantOrderStatus;
     private List<Product> products;
     private BigDecimal price;
-    private Instant createAt;
+    private Instant createdAt;
 
 
 }

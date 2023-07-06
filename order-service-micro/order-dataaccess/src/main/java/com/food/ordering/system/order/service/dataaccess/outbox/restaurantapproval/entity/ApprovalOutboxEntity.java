@@ -23,7 +23,7 @@ public class ApprovalOutboxEntity {
     private UUID id;
     private UUID sagaId;
     private ZonedDateTime createdAt;
-    private ZonedDateTime precessedAt;
+    private ZonedDateTime processedAt;
     private String type;
     private String payload;
     @Enumerated(EnumType.STRING)

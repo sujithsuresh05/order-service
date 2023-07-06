@@ -32,6 +32,7 @@ public class OrderOutboxCleanerScheduler implements OutboxScheduler {
             log.info("Received {} OrderOutboxMessage for clean-up!", outboxMessages.size());
             orderOutboxHelper.deleteOrderOutboxMessageByOutboxStatus(OutboxStatus.COMPLETED);
             log.info("Deleted {} OrderOutboxMessage!", outboxMessages.size());
+
         }
     }
 }
