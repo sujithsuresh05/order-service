@@ -1,11 +1,10 @@
 package com.food.ordering.system.order.service.domain;
 
-import com.food.ordering.system.domain.event.publisher.DomainEventPublisher;
 import com.food.ordering.system.domain.exception.DomainException;
 import com.food.ordering.system.order.service.domain.dto.create.CreateOrderCommand;
-import com.food.ordering.system.order.service.domain.enitiy.Customer;
-import com.food.ordering.system.order.service.domain.enitiy.Order;
-import com.food.ordering.system.order.service.domain.enitiy.Restaurant;
+import com.food.ordering.system.order.service.domain.entity.Customer;
+import com.food.ordering.system.order.service.domain.entity.Order;
+import com.food.ordering.system.order.service.domain.entity.Restaurant;
 import com.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
 import com.food.ordering.system.order.service.domain.exception.OrderDomainException;
 import com.food.ordering.system.order.service.domain.mapper.OrderDataMapper;

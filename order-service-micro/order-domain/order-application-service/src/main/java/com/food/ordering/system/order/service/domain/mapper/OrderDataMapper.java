@@ -4,18 +4,15 @@ import com.food.ordering.system.domain.valueobject.*;
 import com.food.ordering.system.order.service.domain.dto.create.CreateOrderCommand;
 import com.food.ordering.system.order.service.domain.dto.create.CreateOrderResponse;
 import com.food.ordering.system.order.service.domain.dto.create.OrderAddress;
+import com.food.ordering.system.order.service.domain.dto.message.CustomerModel;
 import com.food.ordering.system.order.service.domain.dto.track.TrackOrderResponse;
-import com.food.ordering.system.order.service.domain.enitiy.Order;
-import com.food.ordering.system.order.service.domain.enitiy.OrderItem;
-import com.food.ordering.system.order.service.domain.enitiy.Product;
-import com.food.ordering.system.order.service.domain.enitiy.Restaurant;
+import com.food.ordering.system.order.service.domain.entity.*;
 import com.food.ordering.system.order.service.domain.event.OrderCancelledEvent;
 import com.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
 import com.food.ordering.system.order.service.domain.event.OrderPaidEvent;
 import com.food.ordering.system.order.service.domain.outbox.model.approval.OrderApprovalEventPayload;
 import com.food.ordering.system.order.service.domain.outbox.model.approval.OrderApprovalEventProduct;
 import com.food.ordering.system.order.service.domain.outbox.model.payment.OrderPaymentEventPayload;
-import com.food.ordering.system.order.service.domain.outbox.model.payment.OrderPaymentOutboxMessage;
 import com.food.ordering.system.order.service.domain.valueobject.StreetAddress;
 import org.springframework.stereotype.Component;
 
@@ -95,6 +92,13 @@ public class OrderDataMapper {
                 orderAddress.getStreet(),
                 orderAddress.getPostalCode(),
                 orderAddress.getCity());
+    }
+
+    public Customer customerModelToCustomer(CustomerModel customerModel) {
+        return new Customer(new CustomerId(UUID.fromString(customerModel.getId())),
+                customerModel.getUsername(),
+                customerModel.getFirstName(),
+                customerModel.getLastName());
     }
 
     public CreateOrderResponse orderToCreateOrderResponse(Order order, String message) {

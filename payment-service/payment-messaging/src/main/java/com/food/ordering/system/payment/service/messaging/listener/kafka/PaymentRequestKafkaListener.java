@@ -7,8 +7,7 @@ import com.food.ordering.system.payment.service.domain.exception.PaymentNotFound
 import com.food.ordering.system.payment.service.messaging.mapper.PaymentMessagingDataMapper;
 import com.food.ordering.system.payment.service.domain.ports.input.message.listener.PaymentRequestMessageListener;
 import lombok.extern.slf4j.Slf4j;
-import om.food.ordering.system.kafka.consumer.KafkaConsumer;
-import org.postgresql.util.PSQLException;
+import com.food.ordering.system.kafka.consumer.KafkaConsumer;
 import org.postgresql.util.PSQLState;
 import org.springframework.dao.DataAccessException;
 import org.springframework.kafka.annotation.KafkaListener;

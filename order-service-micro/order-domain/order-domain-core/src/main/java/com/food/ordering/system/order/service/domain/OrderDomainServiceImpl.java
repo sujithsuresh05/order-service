@@ -1,11 +1,10 @@
 package com.food.ordering.system.order.service.domain;
 
 import com.food.ordering.system.domain.DomainConstants;
-import com.food.ordering.system.domain.event.publisher.DomainEventPublisher;
-import com.food.ordering.system.order.service.domain.enitiy.Order;
-import com.food.ordering.system.order.service.domain.enitiy.OrderItem;
-import com.food.ordering.system.order.service.domain.enitiy.Product;
-import com.food.ordering.system.order.service.domain.enitiy.Restaurant;
+import com.food.ordering.system.order.service.domain.entity.Order;
+import com.food.ordering.system.order.service.domain.entity.OrderItem;
+import com.food.ordering.system.order.service.domain.entity.Product;
+import com.food.ordering.system.order.service.domain.entity.Restaurant;
 import com.food.ordering.system.order.service.domain.event.OrderCancelledEvent;
 import com.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
 import com.food.ordering.system.order.service.domain.event.OrderPaidEvent;

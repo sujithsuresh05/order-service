@@ -6,7 +6,7 @@ import com.food.ordering.system.order.service.domain.exception.OrderNotFoundExce
 import com.food.ordering.system.order.service.domain.ports.input.message.listener.restaurantapproval.RestaurantApprovalResponseMessageListener;
 import com.food.ordering.system.order.service.messaging.mapper.OrderMessagingDataMapper;
 import lombok.extern.slf4j.Slf4j;
-import om.food.ordering.system.kafka.consumer.KafkaConsumer;
+import com.food.ordering.system.kafka.consumer.KafkaConsumer;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
